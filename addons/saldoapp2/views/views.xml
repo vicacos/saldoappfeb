@@ -1,60 +1,111 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="saldoapp2.list">
-      <field name="name">saldoapp2 list</field>
-      <field name="model">saldoapp2.saldoapp2</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+  <!--VISTA FORMULARIO MOVIMIENTO-->
+  <record id="saldoapp2.view_form_sa_movimiento" model="ir.ui.view">
+    <field name='name'>view.form.sa.movimiento</field>
+    <field name='model'>sa.movimiento</field>
+    <field name='arch' type= "xml">
+      <form>
+        <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="monto_total"/>
+              <field name="tipo"/>
+            </group>
+            <group>
+              <field name="fecha"/>
+              <field name="moneda"/>
+            </group>
+          </group> 
+        </sheet>
+      </form>   
+    </field>      
+  </record>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="saldoapp2.action_window">
-      <field name="name">saldoapp2 window</field>
-      <field name="res_model">saldoapp2.saldoapp2</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+  <!--VISTA FORMULARIO CATEGORIA-->
+  <record id="saldoapp2.view_form_sa_categoria" model="ir.ui.view">
+    <field name='name'>view.form.sa.categoria</field>
+    <field name='model'>sa.categoria</field>
+    <field name='arch' type= "xml">
+      <form>
+        <sheet>
+          <group>
+            <group>
+              <field name="nombre"/>
+              <field name="tipo"/>
+            </group>
+            <group>
+              <field name="active"/>
+            </group>
+          </group> 
+        </sheet>
+      </form>   
+    </field>      
+  </record>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="saldoapp2.action_server">
-      <field name="name">saldoapp2 server</field>
-      <field name="model_id" ref="model_saldoapp2_saldoapp2"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
+  <!--VISTA  LISTA FORMULARIO MOVIMIENTO-->
+  <record id="saldoapp2.view_tree_sa_movimiento" model="ir.ui.view">
+    <field name='name'>view.tree.sa.movimiento</field>
+    <field name='model'>sa.movimiento</field>
+    <field name='arch' type= "xml">
+      <tree>
+        <field name="name"/>
+        <field name="monto_total"/>
+        <field name="fecha"/>
+        <field name="moneda"/>
+        <field name="tipo"/>  
+      </tree>   
+    </field>      
+  </record>
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="saldoapp2" id="saldoapp2.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="saldoapp2.menu_1" parent="saldoapp2.menu_root"/>
-    <menuitem name="Menu 2" id="saldoapp2.menu_2" parent="saldoapp2.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="saldoapp2.menu_1_list" parent="saldoapp2.menu_1"
-              action="saldoapp2.action_window"/>
-    <menuitem name="Server to list" id="saldoapp2" parent="saldoapp2.menu_2"
-              action="saldoapp2.action_server"/>
-    -->
-  </data>
+  
+  <!--ACCION DE VENTANA MOVIMIENTO-->
+  <record id="saldoapp2.action_view_sa_movimiento" model="ir.actions.act_window">
+    <field name="name">Lista de Movimiento</field>
+    <field name="res_model">sa.movimiento</field>
+    <field name="view_mode">tree,form</field>      
+  </record>
+
+  <!--ACCCION VENTANA CATEGORIA-->
+  <record id="saldoapp2.action_view_sa_categoria" model="ir.actions.act_window">
+    <field name="name">Categorias</field>
+    <field name="res_model">sa.categoria</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <!--MENU -->
+  <record id="saldoapp2.menu_saldoapp" model="ir.ui.menu">
+    <field name="name">Saldo App</field>
+  </record>
+
+  <!--SUB MENU MOVIMIENTOS-->
+  <record id="saldoapp2.menu_movimiento" model="ir.ui.menu">
+    <field name="name">Movimientos</field>
+    <field name="action" ref='saldoapp2.action_view_sa_movimiento'/>
+    <field name="parent_id" ref="saldoapp2.menu_saldoapp"/>
+  </record>
+
+  <!--sUB MENU CATEGORIAS-->
+  <record id="saldoapp2.menu_categoria" model="ir.ui.menu">
+    <field name="name">Categorias</field>
+    <field name="action" ref='saldoapp2.action_view_sa_categoria'/>
+    <field name="parent_id" ref="saldoapp2.menu_saldoapp"/>
+  </record>
+
+
+
+
+<!--
+  <record>
+    <field>
+      <form>
+        <field name="name"/>
+        <field name="monto_total"/>
+        <field name="fecha"/>
+        <field name="moneda"/>
+        <field name="tipo"/>
+       />
+      </form>
+    </field>
+  </record> -->
 </odoo>

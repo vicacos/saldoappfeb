@@ -1,0 +1,17 @@
+<odoo>
+    <record id='saldoapp2.movimiento1' model='sa.movimiento'>
+        <field name="name"> Compra de viveres </field>
+        <field name="monto_total">140</field>
+        <field name="tipo">E</field>
+        <field name="fecha">2020/02/20</field>
+        <field name="moneda">PEN</field>
+    </record>
+    
+    <record id="saldoapp2.movimiento2" model="sa.movimiento">
+        <field name="name">Venta de monedas</field>
+        <field name="monto_total">160</field>
+        <field name="tipo">I</field>
+        <field name="fecha">2020/02/21</field>
+        <field name="moneda">USD</field>
+    </record>
+</odoo>
